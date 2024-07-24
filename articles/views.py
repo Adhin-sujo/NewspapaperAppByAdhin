@@ -45,13 +45,3 @@ class ArticleCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
-    
-class CommentCreateView(LoginRequiredMixin, CreateView):
-    model = Comment
-    fields = ('comment','article',)
-    template_name = 'comment_new.html'
-    login_url = 'login'
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
